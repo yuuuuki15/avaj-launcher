@@ -3,7 +3,7 @@ JAVA = java
 SRC_DIR = src
 BIN_DIR = bin
 
-MAIN_CLASS = HelloWorld
+MAIN_CLASS = Main
 
 SRCS = $(wildcard $(SRC_DIR)/*.java)
 CLASSES = $(SRCS:$(SRC_DIR)/%.java=$(BIN_DIR)/%.class)
