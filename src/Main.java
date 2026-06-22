@@ -9,12 +9,12 @@ public class Main {
             aircraft.getInfo();
         }
 
-        ((Balloon)balloon).fly();
-        ((JetPlane)jetPlane).fly();
-        ((Balloon)balloon).fly();
-        ((JetPlane)jetPlane).fly();
-        ((Balloon)balloon).fly();
-        ((JetPlane)jetPlane).fly();
+        balloon.fly();
+        jetPlane.fly();
+        balloon.fly();
+        jetPlane.fly();
+        balloon.fly();
+        jetPlane.fly();
 
         for (Aircraft aircraft : array) {
             aircraft.getInfo();

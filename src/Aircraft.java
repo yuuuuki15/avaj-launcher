@@ -1,8 +1,8 @@
-class Aircraft {
-    private String name;
-    private int longitude;
-    private int latitude;
-    private int height;
+abstract class Aircraft implements Flyable {
+    protected String name;
+    protected int longitude;
+    protected int latitude;
+    protected int height;
 
     public Aircraft() {}
 

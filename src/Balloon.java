@@ -1,16 +1,8 @@
 class Balloon extends Aircraft {
-    private String name;
-    private int longitude;
-    private int latitude;
-    private int height;
-
     public Balloon() {}
 
     public Balloon(String name, int longitude, int latitude, int height) {
-        this.name = name;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.height = height;
+        super(name, longitude, latitude, height);
     }
 
     @Override public void getInfo() {
