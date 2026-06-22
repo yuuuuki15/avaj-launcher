@@ -3,10 +3,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WeatherTower {
+    private static final WeatherTower INSTANCE = new WeatherTower();
     private final List<WeatherObserver> observers;
 
-    public WeatherTower() {
+    private  WeatherTower() {
         observers = new ArrayList<>();
+    }
+
+    public static WeatherTower getInstance() {
+        return INSTANCE;
     }
 
     public void register(WeatherObserver observer) {
