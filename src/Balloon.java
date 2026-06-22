@@ -9,11 +9,19 @@ class Balloon extends Aircraft {
         System.out.println("[Balloon] " + this.name + " at (" + this.longitude + ", " + this.latitude + ", " + this.height + ")");
     }
 
-    public void fly() {
+    @Override public void fly() {
         if (this.height + 4 >= 100) {
             this. height = 100;
         } else {
             this.height += 4;
+        }
+    }
+
+    @Override public void updateConditions(String weather) {
+        if ("SUN".equals(weather)) {
+            System.out.println("Balloon#B1: Let's enjoy the good weather!");
+        } else if ("RAIN".equals(weather)) {
+            System.out.println("Balloon#B1: Damn you rain!");
         }
     }
 }

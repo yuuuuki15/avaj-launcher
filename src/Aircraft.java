@@ -1,4 +1,4 @@
-abstract class Aircraft implements Flyable {
+abstract class Aircraft implements Flyable, WeatherObserver {
     protected String name;
     protected int longitude;
     protected int latitude;

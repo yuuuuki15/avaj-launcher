@@ -9,7 +9,15 @@ class JetPlane extends Aircraft {
         System.out.println("[JetPlane] " + this.name + " at (" + this.longitude + ", " + this.latitude + ", " + this.height + ")");
     }
 
-    public void fly() {
+    @Override public void fly() {
         this.latitude += 10;
+    }
+
+    @Override public void updateConditions(String weather) {
+        if ("SUN".equals(weather)) {
+            System.out.println("JetPlane#B1: Let's enjoy the good weather!");
+        } else if ("RAIN".equals(weather)) {
+            System.out.println("JetPlane#B1: Damn you rain!");
+        }
     }
 }

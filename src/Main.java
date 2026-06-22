@@ -2,22 +2,15 @@ public class Main {
     public static void main(String[] args) {
         Aircraft balloon = new Balloon("balloon", 100, 200, 90);
         Aircraft jetPlane = new JetPlane("jet", 400, 500, 600);
+        WeatherTower weatherTower = new WeatherTower();
+        weatherTower.register(balloon);
+        weatherTower.register(jetPlane);
 
-        Aircraft[] array = {balloon, jetPlane};
+        weatherTower.changeWeather("SUN");
 
-        for (Aircraft aircraft : array) {
-            aircraft.getInfo();
-        }
+        weatherTower.unregister(balloon);
+        weatherTower.unregister(jetPlane);
 
-        balloon.fly();
-        jetPlane.fly();
-        balloon.fly();
-        jetPlane.fly();
-        balloon.fly();
-        jetPlane.fly();
-
-        for (Aircraft aircraft : array) {
-            aircraft.getInfo();
-        }
+        weatherTower.changeWeather("RAIN");
     }
 }
