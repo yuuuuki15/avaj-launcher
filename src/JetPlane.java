@@ -15,9 +15,9 @@ class JetPlane extends Aircraft {
 
     @Override public void updateConditions(String weather) {
         if ("SUN".equals(weather)) {
-            System.out.println("JetPlane#B1: Let's enjoy the good weather!");
+            System.out.println("JetPlane#" + this.name + ": Let's enjoy the good weather!");
         } else if ("RAIN".equals(weather)) {
-            System.out.println("JetPlane#B1: Damn you rain!");
+            System.out.println("JetPlane#" + this.name + ": Damn you rain!");
         }
     }
 }

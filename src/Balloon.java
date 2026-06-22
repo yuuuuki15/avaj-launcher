@@ -19,9 +19,9 @@ class Balloon extends Aircraft {
 
     @Override public void updateConditions(String weather) {
         if ("SUN".equals(weather)) {
-            System.out.println("Balloon#B1: Let's enjoy the good weather!");
+            System.out.println("Balloon#" + this.name + ": Let's enjoy the good weather!");
         } else if ("RAIN".equals(weather)) {
-            System.out.println("Balloon#B1: Damn you rain!");
+            System.out.println("Balloon#" + this.name + ": Damn you rain!");
         }
     }
 }
