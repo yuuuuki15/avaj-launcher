@@ -2,6 +2,7 @@ JAVAC = javac
 JAVA = java
 SRC_DIR = src
 BIN_DIR = bin
+INPUT_FILE = scenario.txt
 
 MAIN_CLASS = Main
 
@@ -17,7 +18,7 @@ $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
 
 run: all
-	$(JAVA) -cp $(BIN_DIR) $(MAIN_CLASS)
+	$(JAVA) -cp $(BIN_DIR) $(MAIN_CLASS) $(INPUT_FILE)
 
 clean:
 	rm -rf $(BIN_DIR)
