@@ -1,32 +1,29 @@
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class WeatherTower {
-    private static final WeatherTower INSTANCE = new WeatherTower();
-    private final List<WeatherObserver> observers;
-
-    private  WeatherTower() {
-        observers = new ArrayList<>();
+public class WeatherTower extends Tower {
+    WeatherTower() {
     }
 
-    public static WeatherTower getInstance() {
-        return INSTANCE;
+    public void register(Flyable observer) {
+        if (observer != null) {
+            super.register(observer);
+            observer.registerTower(this);
+            System.out.println("aircraft was registered.");
+        }
     }
 
-    public void register(WeatherObserver observer) {
-        observers.add(observer);
-        System.out.println("aircraft was registered.");
+    public void unregister(Flyable observer) {
+        if (observer != null) {
+            super.unregister(observer);
+            System.out.println("aircraft was unregistered.");
+        }
     }
 
-    public void unregister(WeatherObserver observer) {
-        observers.remove(observer);
-        System.out.println("aircraft was unregistered.");
+    String getWeather(Coordinates coordinates) {
+        return WeatherProvider.getCurrentWeather(coordinates);
     }
 
     public void changeWeather() {
-        for (WeatherObserver observer : observers) {
-            observer.updateConditions();
-        }
+        conditionChanged();
     }
 }

@@ -28,20 +28,14 @@ public class Main {
 
         Aircraft balloon = AircraftFactory.newAircraft("Balloon", "balloon", 100, 200, 90);
         Aircraft jetPlane = AircraftFactory.newAircraft("JetPlane", "jet", 400, 500, 60);
-        WeatherTower weatherTower = WeatherTower.getInstance();
+        WeatherTower weatherTower = new WeatherTower();
 
         for (Aircraft aircraft : aircraftArray) {
             weatherTower.register(aircraft);
         }
-        // weatherTower.register(balloon);
-        // weatherTower.register(jetPlane);
 
         for (int i = 0; i < simulation; i++) {
             weatherTower.changeWeather();
-        }
-
-        for (Aircraft aircraft : aircraftArray) {
-            weatherTower.unregister(aircraft);
         }
     }
 }
