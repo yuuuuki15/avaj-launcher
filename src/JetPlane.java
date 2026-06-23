@@ -5,19 +5,27 @@ class JetPlane extends Aircraft {
         super(name, longitude, latitude, height);
     }
 
-    @Override public void getInfo() {
-        System.out.println("[JetPlane] " + this.name + " at (" + this.longitude + ", " + this.latitude + ", " + this.height + ")");
-    }
-
-    @Override public void fly() {
-        this.latitude += 10;
-    }
-
-    @Override public void updateConditions(String weather) {
-        if ("SUN".equals(weather)) {
-            System.out.println("JetPlane#" + this.name + ": Let's enjoy the good weather!");
-        } else if ("RAIN".equals(weather)) {
-            System.out.println("JetPlane#" + this.name + ": Damn you rain!");
+    @Override public void updateConditions() {
+        Weather weather = super.getWeather();
+        if (null != weather) switch (weather) {
+            case SUN:
+                System.out.println("JetPlane#" + this.name + ": Let's enjoy the good weather!");
+                updateCoordinates(2, 10, 2);
+                break;
+            case RAIN:
+                System.out.println("JetPlane#" + this.name + ": Damn you rain!");
+                updateCoordinates(0, 5, 0);
+                break;
+            case FOG:
+                System.out.println("JetPlane#" + this.name + ": I can't see anything! It's foggy");
+                updateCoordinates(0, 1, 0);
+                break;
+            case SNOW:
+                System.out.println("JetPlane#" + this.name + ": The winter is coming...");
+                updateCoordinates(0, 0, -7);
+                break;
+            default:
+                break;
         }
     }
 }

@@ -13,7 +13,26 @@ abstract class Aircraft implements Flyable, WeatherObserver {
         this.height = height;
     }
 
-    public void getInfo() {
-        System.out.println("[Aircraft] " + this.name + " at (" + this.longitude + ", " + this.latitude + ", " + this.height + ")");
+    Weather getWeather() {
+        int sum = longitude + latitude + height;
+        int tmp = Math.abs(sum) % 4;
+        switch (tmp) {
+            case 0:
+                return Weather.SUN;
+            case 1:
+                return Weather.RAIN;
+            case 2:
+                return Weather.FOG;
+            case 3:
+                return Weather.SNOW;
+            default:
+                throw new AssertionError();
+        }
+    }
+
+    void updateCoordinates(int longitude, int latitude, int height) {
+        this.longitude += longitude;
+        this.latitude += latitude;
+        this.height += height;
     }
 }

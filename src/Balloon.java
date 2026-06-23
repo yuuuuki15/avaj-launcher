@@ -5,23 +5,27 @@ class Balloon extends Aircraft {
         super(name, longitude, latitude, height);
     }
 
-    @Override public void getInfo() {
-        System.out.println("[Balloon] " + this.name + " at (" + this.longitude + ", " + this.latitude + ", " + this.height + ")");
-    }
-
-    @Override public void fly() {
-        if (this.height + 4 >= 100) {
-            this. height = 100;
-        } else {
-            this.height += 4;
-        }
-    }
-
-    @Override public void updateConditions(String weather) {
-        if ("SUN".equals(weather)) {
-            System.out.println("Balloon#" + this.name + ": Let's enjoy the good weather!");
-        } else if ("RAIN".equals(weather)) {
-            System.out.println("Balloon#" + this.name + ": Damn you rain!");
+    @Override public void updateConditions() {
+        Weather weather = super.getWeather();
+        if (null != weather) switch (weather) {
+            case SUN:
+                System.out.println("Balloon#" + this.name + ": Let's enjoy the good weather!");
+                updateCoordinates(2, 0, 4);
+                break;
+            case RAIN:
+                System.out.println("Balloon#" + this.name + ": Damn you rain!");
+                updateCoordinates(0, 0, -5);
+                break;
+            case FOG:
+                System.out.println("Balloon#" + this.name + ": I can't see anything! It's foggy");
+                updateCoordinates(0, 0, -3);
+                break;
+            case SNOW:
+                System.out.println("Balloon#" + this.name + ": The winter is coming...");
+                updateCoordinates(0, 0, -15);
+                break;
+            default:
+                break;
         }
     }
 }

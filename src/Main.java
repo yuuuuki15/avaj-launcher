@@ -37,9 +37,8 @@ public class Main {
         // weatherTower.register(jetPlane);
 
         for (int i = 0; i < simulation; i++) {
-            weatherTower.changeWeather("SUN");
+            weatherTower.changeWeather();
         }
-        // weatherTower.changeWeather("SUN");
 
         for (Aircraft aircraft : aircraftArray) {
             weatherTower.unregister(aircraft);

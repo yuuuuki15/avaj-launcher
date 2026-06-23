@@ -1,3 +1,3 @@
 public interface WeatherObserver {
-    void updateConditions(String weather);
+    void updateConditions();
 }

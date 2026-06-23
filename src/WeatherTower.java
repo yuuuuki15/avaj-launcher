@@ -16,15 +16,17 @@ public class WeatherTower {
 
     public void register(WeatherObserver observer) {
         observers.add(observer);
+        System.out.println("aircraft was registered.");
     }
 
     public void unregister(WeatherObserver observer) {
         observers.remove(observer);
+        System.out.println("aircraft was unregistered.");
     }
 
-    public void changeWeather(String weather) {
+    public void changeWeather() {
         for (WeatherObserver observer : observers) {
-            observer.updateConditions(weather);
+            observer.updateConditions();
         }
     }
 }
