@@ -1,3 +1,5 @@
+package com.ykawakit;
+
 abstract class Flyable{
     protected WeatherTower weatherTower;
 

@@ -1,3 +1,5 @@
+package com.ykawakit;
+
 public class AircraftFactory {
     private AircraftFactory() {}
 

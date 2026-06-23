@@ -1,3 +1,5 @@
+package com.ykawakit;
+
 public class WeatherProvider {
     private static final String[] weather = {
         Weather.SUN.toString(),

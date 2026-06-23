@@ -1,3 +1,4 @@
+package com.ykawakit;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

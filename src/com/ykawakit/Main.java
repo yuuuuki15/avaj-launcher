@@ -1,8 +1,9 @@
+package com.ykawakit;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.List;
-
 
 public class Main {
     private static final String OUTPUT_FILE = "simulation.txt";

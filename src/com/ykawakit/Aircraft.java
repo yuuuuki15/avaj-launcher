@@ -1,3 +1,5 @@
+package com.ykawakit;
+
 abstract class Aircraft extends Flyable {
     protected String name;
     protected Coordinates coordinates;

@@ -1,3 +1,5 @@
+package com.ykawakit;
+
 public class Helicopter extends Aircraft {
     Helicopter(String name, Coordinates coordinates) {
         super(name, coordinates);

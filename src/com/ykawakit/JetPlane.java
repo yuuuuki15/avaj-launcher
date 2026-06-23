@@ -1,3 +1,5 @@
+package com.ykawakit;
+
 class JetPlane extends Aircraft {
     public JetPlane() {}
 

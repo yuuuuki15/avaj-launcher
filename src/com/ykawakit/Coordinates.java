@@ -1,3 +1,5 @@
+package com.ykawakit;
+
 public class Coordinates {
     private final int longitude;
     private final int latitude;

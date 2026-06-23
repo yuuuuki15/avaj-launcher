@@ -1,3 +1,5 @@
+package com.ykawakit;
+
 public enum Weather {
     SUN(0),
     RAIN(1),

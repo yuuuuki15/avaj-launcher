@@ -1,4 +1,4 @@
-
+package com.ykawakit;
 
 public class WeatherTower extends Tower {
     WeatherTower() {

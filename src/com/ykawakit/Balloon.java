@@ -1,3 +1,5 @@
+package com.ykawakit;
+
 class Balloon extends Aircraft {
     public Balloon() {}
 
