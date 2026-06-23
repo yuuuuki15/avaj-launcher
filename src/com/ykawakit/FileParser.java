@@ -23,7 +23,6 @@ public class FileParser {
             while ((line = reader.readLine()) != null) {
                 String[] array = line.split(" ");
                 if (array.length != 5) {
-                    System.out.println("wrong scenario.");
                     throw new Exception("Wrong scenario.");
                 }
                 String type = array[0];
@@ -40,7 +39,7 @@ public class FileParser {
         } catch (IOException e) {
             System.out.println("An error occurred while reading a file: " + this.filename);
         } catch (Exception e) {
-            System.out.println("Something happened." +  e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 

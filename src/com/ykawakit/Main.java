@@ -23,6 +23,8 @@ public class Main {
             PrintStream fileOut = new PrintStream(new FileOutputStream(OUTPUT_FILE));
             System.setOut(fileOut);
         } catch (IOException e) {
+            System.out.println(e.getMessage());
+            return ;
         }
 
         WeatherTower weatherTower = new WeatherTower();
