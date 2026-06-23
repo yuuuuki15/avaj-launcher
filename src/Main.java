@@ -1,4 +1,3 @@
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -23,11 +22,8 @@ public class Main {
             PrintStream fileOut = new PrintStream(new FileOutputStream(OUTPUT_FILE));
             System.setOut(fileOut);
         } catch (IOException e) {
-            e.printStackTrace();
         }
 
-        Aircraft balloon = AircraftFactory.newAircraft("Balloon", "balloon", 100, 200, 90);
-        Aircraft jetPlane = AircraftFactory.newAircraft("JetPlane", "jet", 400, 500, 60);
         WeatherTower weatherTower = new WeatherTower();
 
         for (Aircraft aircraft : aircraftArray) {
