@@ -7,7 +7,8 @@ public class Helicopter extends Aircraft {
 
     void checkLanded() {
         if (coordinates.getHeight() == 0) {
-            System.out.println("Helicopter#" + this.name + "(" + this.id + "): Landed.");
+            describe();
+            System.out.println(": Landed.");
             this.weatherTower.unregister(this);
         }
     }
@@ -16,24 +17,32 @@ public class Helicopter extends Aircraft {
         String weather = this.weatherTower.getWeather(coordinates);
         if (null != weather) switch (weather) {
             case "SUN":
-                System.out.println("Helicopter#" + this.name + "(" + this.id + "): Let's enjoy the good weather!");
+                describe();
+                System.out.println(": Let's enjoy the good weather!");
                 updateCoordinates(10, 0, 2);
                 break;
             case "RAIN":
-                System.out.println("Helicopter#" + this.name + "(" + this.id + "): Damn you rain!");
+                describe();
+                System.out.println(": Damn you rain!");
                 updateCoordinates(5, 0, 0);
                 break;
             case "FOG":
-                System.out.println("Helicopter#" + this.name + "(" + this.id + "): I can't see anything! It's foggy");
+                describe();
+                System.out.println(": I can't see anything! It's foggy");
                 updateCoordinates(2, 0, 0);
                 break;
             case "SNOW":
-                System.out.println("Helicopter#" + this.name + "(" + this.id + "): The winter is coming...");
+                describe();
+                System.out.println(": The winter is coming...");
                 updateCoordinates(0, 0, -12);
                 break;
             default:
                 break;
         }
         checkLanded();
+    }
+
+    @Override public void describe() {
+        System.out.print("Helicopter#" + name + "(" + id + ")");
     }
 }

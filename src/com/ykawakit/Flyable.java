@@ -7,4 +7,6 @@ abstract class Flyable{
     public void registerTower(WeatherTower weatherTower) {
         this.weatherTower = weatherTower;
     }
+
+    public abstract void describe();
 }
