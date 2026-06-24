@@ -9,11 +9,14 @@ public class Main {
     private static final String OUTPUT_FILE = "simulation.txt";
     public static void main(String[] args) {
         String inputFileName;
-        if (args.length > 0) {
-            inputFileName = args[0];
-        } else {
+        if (args.length <= 0) {
             System.out.println("Please specify the input file name.");
             return ;
+        } else if (args.length > 1) {
+            System.out.println("Program will take exactly one argument. Please try again.");
+            return ;
+        } else {
+            inputFileName = args[0];
         }
         FileParser fileParser = new FileParser(inputFileName);
         int simulation = fileParser.getSimulationCount();
