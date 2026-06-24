@@ -1,12 +1,14 @@
 package com.ykawakit;
 
 abstract class Aircraft extends Flyable {
+    protected long id;
     protected String name;
     protected Coordinates coordinates;
 
     public Aircraft() {}
 
     public Aircraft(String name, Coordinates coordinates) {
+        this.id = UniqueIdFactory.getInstance().nextId();
         this.name = name;
         this.coordinates = coordinates;
     }
