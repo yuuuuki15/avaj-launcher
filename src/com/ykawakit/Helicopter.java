@@ -1,8 +1,8 @@
 package com.ykawakit;
 
 public class Helicopter extends Aircraft {
-    Helicopter(String name, Coordinates coordinates) {
-        super(name, coordinates);
+    Helicopter(long id, String name, Coordinates coordinates) {
+        super(id, name, coordinates);
     }
 
     void checkLanded() {

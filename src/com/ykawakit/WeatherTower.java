@@ -1,9 +1,6 @@
 package com.ykawakit;
 
 public class WeatherTower extends Tower {
-    WeatherTower() {
-    }
-
     public void register(Flyable observer) {
         if (observer != null) {
             super.register(observer);
@@ -19,7 +16,7 @@ public class WeatherTower extends Tower {
         }
     }
 
-    String getWeather(Coordinates coordinates) {
+    public String getWeather(Coordinates coordinates) {
         return WeatherProvider.getCurrentWeather(coordinates);
     }
 

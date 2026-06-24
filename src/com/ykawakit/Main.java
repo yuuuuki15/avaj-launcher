@@ -17,7 +17,7 @@ public class Main {
         }
         FileParser fileParser = new FileParser(inputFileName);
         int simulation = fileParser.getSimulationCount();
-        List<Aircraft> aircraftArray = fileParser.getAircrafts();
+        List<Flyable> aircraft_array = fileParser.getAircraftArray();
 
         try {
             PrintStream fileOut = new PrintStream(new FileOutputStream(OUTPUT_FILE));
@@ -29,7 +29,7 @@ public class Main {
 
         WeatherTower weatherTower = new WeatherTower();
 
-        for (Aircraft aircraft : aircraftArray) {
+        for (Flyable aircraft : aircraft_array) {
             weatherTower.register(aircraft);
         }
 

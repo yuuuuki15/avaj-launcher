@@ -9,7 +9,7 @@ import java.util.List;
 public class FileParser {
     String filename;
     int simulationCount;
-    List<Aircraft> aircrafts = new ArrayList<>();
+    List<Flyable> aircraft_array = new ArrayList<>();
 
     FileParser(String filename) {
         this.filename = filename;
@@ -31,9 +31,9 @@ public class FileParser {
                 int latitude = Integer.parseInt(array[3]);
                 int height = Integer.parseInt(array[4]);
 
-                Aircraft aircraft = AircraftFactory.newAircraft(type, name, longitude, latitude, height);
+                Flyable aircraft = AircraftFactory.newAircraft(type, name, longitude, latitude, height);
                 if (aircraft != null) {
-                    this.aircrafts.add(aircraft);
+                    this.aircraft_array.add(aircraft);
                 }
             }
         } catch (IOException e) {
@@ -47,7 +47,7 @@ public class FileParser {
         return this.simulationCount;
     }
 
-    public List<Aircraft> getAircrafts() {
-        return this.aircrafts;
+    public List<Flyable> getAircraftArray() {
+        return this.aircraft_array;
     }
 }

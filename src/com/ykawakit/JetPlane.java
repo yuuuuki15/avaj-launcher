@@ -3,8 +3,8 @@ package com.ykawakit;
 class JetPlane extends Aircraft {
     public JetPlane() {}
 
-    public JetPlane(String name, Coordinates coordinates) {
-        super(name, coordinates);
+    public JetPlane(long id, String name, Coordinates coordinates) {
+        super(id, name, coordinates);
     }
 
     void checkLanded() {

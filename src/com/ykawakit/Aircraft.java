@@ -7,8 +7,8 @@ abstract class Aircraft extends Flyable {
 
     public Aircraft() {}
 
-    public Aircraft(String name, Coordinates coordinates) {
-        this.id = UniqueIdFactory.getInstance().nextId();
+    public Aircraft(long id, String name, Coordinates coordinates) {
+        this.id = id;
         this.name = name;
         this.coordinates = coordinates;
     }

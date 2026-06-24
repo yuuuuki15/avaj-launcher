@@ -3,8 +3,8 @@ package com.ykawakit;
 class Balloon extends Aircraft {
     public Balloon() {}
 
-    public Balloon(String name, Coordinates coordinates) {
-        super(name, coordinates);
+    public Balloon(long id, String name, Coordinates coordinates) {
+        super(id, name, coordinates);
     }
 
     void checkLanded() {

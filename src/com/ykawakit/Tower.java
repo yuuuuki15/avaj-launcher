@@ -6,7 +6,7 @@ import java.util.List;
 public abstract class Tower {
     private final List<Flyable> observers;
 
-    public Tower() {
+    Tower() {
         this.observers = new ArrayList<>();
     }
 
