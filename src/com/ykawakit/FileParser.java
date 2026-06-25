@@ -18,12 +18,18 @@ public class FileParser {
             String line;
 
             line = reader.readLine();
+            if (line.isEmpty() || !line.matches("^[0-9]+$")){
+                throw new Exception("First line of the scenario file should be a positive integer.");
+            }
             this.simulationCount = Integer.parseInt(line);
+            if (this.simulationCount < 0) {
+                throw new Exception("First line of the scenario file should be a positive integer.");
+            }
 
             while ((line = reader.readLine()) != null) {
                 String[] array = line.split(" ");
                 if (array.length != 5) {
-                    throw new Exception("Wrong scenario.");
+                    throw new Exception("Wrong format. Use this instead: TYPE NAME LONGITUDE LATITUDE HEIGHT");
                 }
                 String type = array[0];
                 String name = array[1];
