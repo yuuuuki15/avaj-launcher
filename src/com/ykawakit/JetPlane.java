@@ -21,7 +21,7 @@ class JetPlane extends Aircraft {
             case "SUN":
                 describe();
                 System.out.println(": Let's enjoy the good weather!");
-                updateCoordinates(2, 10, 2);
+                updateCoordinates(0, 10, 2);
                 break;
             case "RAIN":
                 describe();

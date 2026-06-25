@@ -2,16 +2,19 @@ package com.ykawakit;
 
 public class WeatherProvider {
     private static final String[] weather = {
+        Weather.SNOW.toString(),
         Weather.SUN.toString(),
         Weather.RAIN.toString(),
         Weather.FOG.toString(),
-        Weather.SNOW.toString(),
     };
 
     private WeatherProvider(){}
 
     public static String getCurrentWeather(Coordinates coordinates) {
-        int sum = coordinates.getLongitude() + coordinates.getLatitude() + coordinates.getHeight();
+        if (coordinates.getLongitude() > 180 || coordinates.getLatitude() > 90) {
+            return Weather.SNOW.toString();
+        }
+        int sum = (coordinates.getLongitude() % 2 + coordinates.getLatitude() % 3) * (coordinates.getHeight() % 3);
         return weather[Math.abs(sum) % weather.length];
     }
 }

@@ -51,3 +51,81 @@ In this subject, relation between AircraftFactory, Flyable and all these subclas
 Advantage of this design pattern is that in the main, we don't need to think about which Class to instantiate but just call Factory Class.
 This structure allows for easy addition to new Flyable Class by simply add switch case, without needing to alter existing Main code.
 
+
+### WeatherProvider logic
+It's a logic that will try to reproduce natural behavior of aircraft, which avoid these cases,
+- never land
+- endlessly fly up
+
+```:java
+if (coordinates.getLongitude() > 180 || coordinates.getLatitude() > 90) {
+    return Weather.SNOW.toString();
+}
+int sum = (coordinates.getLongitude() % 2 + coordinates.getLatitude() % 3) * (coordinates.getHeight() % 3);
+return weather[Math.abs(sum) % weather.length];
+```
+
+(x + y) * z
+
+x = 0 | 1,
+y = 0 | 1 | 2,
+z = 0 | 1 | 2
+
+possible cases:
+
+x = 2,
+y = 3,
+z = 3
+
+2 * 3 * 3 = 18 cases
+
+Let's take all example and calculate:
+```
+0, 0, 0 = 0      % 4 = 0
+0, 0, 1 = 0      % 4 = 0
+0, 0, 2 = 0      % 4 = 0
+0, 1, 0 = 0      % 4 = 0
+0, 1, 1 = 1      % 4 = 1
+0, 1, 2 = 2      % 4 = 2
+0, 2, 0 = 0      % 4 = 0
+0, 2, 1 = 2      % 4 = 2
+0, 2, 2 = 4      % 4 = 0
+1, 0, 0 = 0      % 4 = 0
+1, 0, 1 = 1      % 4 = 1
+1, 0, 2 = 2      % 4 = 2
+1, 1, 0 = 0      % 4 = 0
+1, 1, 1 = 2      % 4 = 2
+1, 1, 2 = 4      % 4 = 0
+1, 2, 0 = 0      % 4 = 0
+1, 2, 1 = 3      % 4 = 3
+1, 2, 2 = 6      % 4 = 2
+
+0 = 10 patterns
+1 = 2 patterns
+2 = 5 patterns
+3 = 1 pattern
+```
+Since SUN always increases height and SNOW always decreases it, we want SNOW to be the most frequent and SUN to be the least frequent. So the weather array is defined as:
+
+```java
+private static final String[] weather = {"SNOW", "RAIN", "FOG", "SUN"};
+// index 0 → SNOW (10 patterns = most frequent)
+// index 1 → RAIN  (2 patterns)
+// index 2 → FOG   (5 patterns)
+// index 3 → SUN   (1 pattern  = least frequent)
+```
+
+However, a problem remains: if an aircraft gets stuck cycling between RAIN and FOG, its height never changes and it loops forever. Since RAIN and FOG only move longitude/latitude, the coordinates can enter a cycle where the weather never becomes SNOW.
+
+To break out of this cycle, I impose geographic boundaries. In the real world:
+```
+-180 < longitude < 180
+-90  < latitude  < 90
+```
+The subject requires coordinates to be positive with no upper limit, so aircraft can drift beyond real-world bounds indefinitely. By forcing SNOW when those bounds are exceeded, any aircraft that drifts too far is pulled back down:
+
+```java
+if (coordinates.getLongitude() > 180 || coordinates.getLatitude() > 90) {
+    return Weather.SNOW.toString();
+}
+```

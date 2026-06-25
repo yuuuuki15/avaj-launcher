@@ -29,7 +29,7 @@ public class Helicopter extends Aircraft {
             case "FOG":
                 describe();
                 System.out.println(": I can't see anything! It's foggy");
-                updateCoordinates(2, 0, 0);
+                updateCoordinates(1, 0, 0);
                 break;
             case "SNOW":
                 describe();
