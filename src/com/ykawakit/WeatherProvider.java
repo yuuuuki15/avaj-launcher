@@ -3,9 +3,9 @@ package com.ykawakit;
 public class WeatherProvider {
     private static final String[] weather = {
         Weather.SNOW.toString(),
-        Weather.SUN.toString(),
         Weather.RAIN.toString(),
         Weather.FOG.toString(),
+        Weather.SUN.toString(),
     };
 
     private WeatherProvider(){}
