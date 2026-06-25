@@ -1,7 +1,6 @@
 package com.ykawakit;
 
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.PrintStream;
 import java.util.List;
 
@@ -9,6 +8,8 @@ public class Main {
     private static final String OUTPUT_FILE = "simulation.txt";
     public static void main(String[] args) {
         String inputFileName;
+        int simulation;
+        List<Flyable> aircraft_array;
         if (args.length <= 0) {
             System.out.println("Please specify the input file name.");
             return ;
@@ -18,14 +19,14 @@ public class Main {
         } else {
             inputFileName = args[0];
         }
-        FileParser fileParser = new FileParser(inputFileName);
-        int simulation = fileParser.getSimulationCount();
-        List<Flyable> aircraft_array = fileParser.getAircraftArray();
 
         try {
+            FileParser fileParser = new FileParser(inputFileName);
+            simulation = fileParser.getSimulationCount();
+            aircraft_array = fileParser.getAircraftArray();
             PrintStream fileOut = new PrintStream(new FileOutputStream(OUTPUT_FILE));
             System.setOut(fileOut);
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             return ;
         }

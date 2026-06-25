@@ -51,6 +51,7 @@ In this subject, relation between AircraftFactory, Flyable and all these subclas
 Advantage of this design pattern is that in the main, we don't need to think about which Class to instantiate but just call Factory Class.
 This structure allows for easy addition to new Flyable Class by simply add switch case, without needing to alter existing Main code.
 
+----
 
 ### WeatherProvider logic
 It's a logic that will try to reproduce natural behavior of aircraft, which avoid these cases,
