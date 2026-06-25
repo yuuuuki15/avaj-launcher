@@ -38,7 +38,7 @@ When main(Client) change the state of Tower, Tower will notify all the observers
 Singleton design pattern is a class design patter that ensure the class will create only one instance.
 It it used when we want centralized control of resources.
 
-In this subject, WeatherProvider and AircraftFactory are implemented as a singleton design pattern.
+In this subject, UniqueIdFactory is implemented as a singleton design pattern.
 We don't need multiple instances to create Aircraft, to provide weather.
 And if you want to count how many Aircrafts you've made in AircraftFactory, singleton design pattern will take advantage, because `AircraftFactory.count` only exist one.
 
