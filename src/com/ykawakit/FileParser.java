@@ -31,7 +31,13 @@ public class FileParser {
                 throw new Exception("Wrong format. Use this instead: TYPE NAME LONGITUDE LATITUDE HEIGHT");
             }
             String type = array[0];
+            if (!type.matches("Balloon|JetPlane|Helicopter")) {
+                throw new Exception("Unknown aircraft type: " + type);
+            }
             String name = array[1];
+            if (!array[2].matches("^[0-9]+$") || !array[3].matches("^[0-9]+$") || !array[4].matches("^[0-9]+$")) {
+                throw new Exception("Coordinates should be positive integers.");
+            }
             int longitude = Integer.parseInt(array[2]);
             int latitude = Integer.parseInt(array[3]);
             int height = Integer.parseInt(array[4]);
