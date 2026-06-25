@@ -1,32 +1,25 @@
 package com.ykawakit;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.List;
 
-public class Main {
+public class Simulator {
     private static final String OUTPUT_FILE = "simulation.txt";
     public static void main(String[] args) {
         String inputFileName;
         int simulation;
         List<Flyable> aircraft_array;
-        if (args.length <= 0) {
-            System.out.println("Please specify the input file name.");
-            return ;
-        } else if (args.length > 1) {
-            System.out.println("Program will take exactly one argument. Please try again.");
-            return ;
-        } else {
-            inputFileName = args[0];
-        }
 
         try {
+            inputFileName = ArgumentManager.getInputFileName(args);
             FileParser fileParser = new FileParser(inputFileName);
             simulation = fileParser.getSimulationCount();
             aircraft_array = fileParser.getAircraftArray();
             PrintStream fileOut = new PrintStream(new FileOutputStream(OUTPUT_FILE));
             System.setOut(fileOut);
-        } catch (Exception e) {
+        } catch (ScenarioFileException | InvalidArgumentException | IOException e) {
             System.out.println(e.getMessage());
             return ;
         }

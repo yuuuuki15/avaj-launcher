@@ -2,6 +2,7 @@ package com.ykawakit;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class FileParser {
     int simulationCount;
     List<Flyable> aircraft_array = new ArrayList<>();
 
-    FileParser(String filename) throws Exception {
+    FileParser(String filename) throws ScenarioFileException, IOException {
         this.filename = filename;
 
         BufferedReader reader = new BufferedReader(new FileReader(this.filename));
@@ -18,25 +19,25 @@ public class FileParser {
 
         line = reader.readLine();
         if (line.isEmpty() || !line.matches("^[0-9]+$")){
-            throw new Exception("First line of the scenario file should be a positive integer.");
+            throw new ScenarioFileException("First line of the scenario file should be a positive integer.");
         }
         this.simulationCount = Integer.parseInt(line);
         if (this.simulationCount < 0) {
-            throw new Exception("First line of the scenario file should be a positive integer.");
+            throw new ScenarioFileException("First line of the scenario file should be a positive integer.");
         }
 
         while ((line = reader.readLine()) != null) {
             String[] array = line.split(" ");
             if (array.length != 5) {
-                throw new Exception("Wrong format. Use this instead: TYPE NAME LONGITUDE LATITUDE HEIGHT");
+                throw new ScenarioFileException("Wrong format. Use this instead: TYPE NAME LONGITUDE LATITUDE HEIGHT");
             }
             String type = array[0];
             if (!type.matches("Balloon|JetPlane|Helicopter")) {
-                throw new Exception("Unknown aircraft type: " + type);
+                throw new InvalidAircraftTypeException("Unknown aircraft type: " + type);
             }
             String name = array[1];
             if (!array[2].matches("^[0-9]+$") || !array[3].matches("^[0-9]+$") || !array[4].matches("^[0-9]+$")) {
-                throw new Exception("Coordinates should be positive integers.");
+                throw new ScenarioFileException("Coordinates should be positive integers.");
             }
             int longitude = Integer.parseInt(array[2]);
             int latitude = Integer.parseInt(array[3]);

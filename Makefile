@@ -4,7 +4,7 @@ SRC_DIR = src
 BIN_DIR = bin
 INPUT_FILE = scenario.txt
 
-MAIN_CLASS = com.ykawakit.Main
+MAIN_CLASS = com.ykawakit.Simulator
 
 SRCS = $(shell find $(SRC_DIR) -name "*.java")
 CLASSES = $(SRCS:$(SRC_DIR)/%.java=$(BIN_DIR)/%.class)
